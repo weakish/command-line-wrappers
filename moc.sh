@@ -1,0 +1,8 @@
+#!/bin/sh
+
+### In Debian, the execute command of moc is 'mocp', because 'moc' has been used by another package.
+
+# moc is a simple music player, with intuitive keyboard shortcuts and simple 
+# playlist management.  The 'press q to detach' feature is nice.
+
+mocp $*
