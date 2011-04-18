@@ -1,0 +1,7 @@
+#!/usr/bin/env rc
+
+### wrapper for dict, preferring wordnet.
+
+dict_client = `{whilk `{basename $0}}
+
+$dict_client -d wn $* || $dict_client -d $*
