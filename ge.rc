@@ -1,0 +1,5 @@
+#!/usr/bin/env rc
+
+# encrypt with current user's public key via gpg
+
+gpg --yes -r `{whoami} -e $* 

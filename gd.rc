@@ -1,0 +1,9 @@
+#!/usr/bin/env rc
+
+### example.gpg -> example
+
+fn gpg_decrypt {
+  gpg -d $1 > `{echo $1 | cut -f 1 -d . -}
+}
+
+echo $* | xargs gpg_decrypt
