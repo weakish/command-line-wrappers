@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env rc
 
 ### In Debian, the execute command of moc is 'mocp', because 'moc' has been used by another package.
 
