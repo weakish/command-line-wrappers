@@ -1,0 +1,5 @@
+#!/usr/bin/env rc
+
+### print 1st path of an executable except ones in $home, useful for wrappers.
+
+which -a $1 | grep -v $home | head -1
