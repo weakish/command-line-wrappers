@@ -1,0 +1,7 @@
+#!/usr/bin/env rc
+
+### wrapper for reportbug
+
+myreportbug = `{whilk `{basename $0}}
+
+$myreportbug --smtppasswd $GMAILPASS
