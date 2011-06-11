@@ -1,4 +1,3 @@
-#!/usr/bin/env rc
+#!/bin/sh
 
-if (~ $1 ()) {cd `{pwd}} else cd $1
 python -m SimpleHTTPServer
