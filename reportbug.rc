@@ -4,4 +4,4 @@
 
 myreportbug = `{whilk `{basename $0}}
 
-$myreportbug --smtppasswd $GMAILPASS
+$myreportbug --smtppasswd $GMAILPASS $*
