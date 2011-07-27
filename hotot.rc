@@ -1,0 +1,5 @@
+#!/usr/bin/env rc
+
+### wrapper for hotot, to use socks proxy
+
+proxychains `{whilk `{basename $0}}
