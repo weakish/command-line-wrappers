@@ -2,4 +2,4 @@
 
 ### wrapper for lunar, output utf-8 hanzi characters
 
-`{whilk `{basename $0}} -h $* | iconv -f gb2312
+`{whilk `{basename $0}} --utf8 $*
