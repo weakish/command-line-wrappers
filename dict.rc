@@ -1,7 +1,8 @@
 #!/usr/bin/env rc
 
-### wrapper for dict, preferring wordnet.
+### wrapper for dict, preferring wordnet, and read out the word.
 
 dict_client = `{whilk `{basename $0}}
 
+espeak $*
 $dict_client -d wn $* || $dict_client -d $*
