@@ -5,4 +5,4 @@
 dict_client = `{whilk `{basename $0}}
 
 espeak $*
-$dict_client -d wn $* || $dict_client -d $*
+$dict_client -d wn $* || $dict_client $*
