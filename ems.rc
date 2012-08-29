@@ -1,0 +1,17 @@
+#!/usr/bin/env rc
+
+### ems stands for ecryptfs-mount-simple
+
+# Usage:
+#
+# ems /path/to/encrypted/dir
+#
+# (You may need to prepend `sudo`.)
+
+# Options:
+# - encrypt file names
+# - AES with 16 keysize (default)
+# - Dot't allow non-eCryptfs files to  be  read  and  written from within an eCryptfs mount.
+# - layover mount
+
+mount -t ecryptfs -o 'ecryptfs_enable_filename_crypto=y,ecryptfs_cipher=aes,ecryptfs_key_bytes=16,ecryptfs_passthrough=n' $1 $1
