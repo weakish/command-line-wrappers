@@ -1,0 +1,10 @@
+#!/usr/bin/env rc
+
+### sshuttle twitter servers
+
+# Usage:
+#
+# stwitter  [username@]sshserver[:port]
+
+
+sshuttle --dns --daemon -r $* 184.169.72.0/24 199.59.148.0/24 199.59.149.0/24
