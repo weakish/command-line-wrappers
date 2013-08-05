@@ -1,0 +1,13 @@
+#!/usr/bin/env rc
+
+# by Jakukyo Friel <weakish@gmail.com>
+# under Apache License, Version 2.0, <http://www.apache.org/licenses/LICENSE-2.0.html>
+
+# Usage:
+
+#     ~ $ calc 6+9
+#     15
+#     ~ $
+
+# The "scale=6" allows for division to be carried out to 6 decimal places.
+echo 'scale=8;' $* | bc
