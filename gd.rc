@@ -2,8 +2,8 @@
 
 ### example.gpg -> example
 
-fn gpg_decrypt {
-  gpg -d $1 > `{echo $1 | cut -f 1 -d . -}
+for (i) {
+  decrypted_file = `{basename $i .gpg}
+  gpg -o $decrypted_file -d $i 
 }
 
-echo $* | xargs gpg_decrypt
