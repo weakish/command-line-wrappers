@@ -3,6 +3,8 @@
 # by Jakukyo Friel <weakish@gmail.com>
 # under Apache License, Version 2.0, <http://www.apache.org/licenses/LICENSE-2.0.html>
 
+### a dirty command line wrapper using w3m to browse explainshell pages
+
 # config
 #
 # My explainshell repo is under /opt/weakish/, change it to suit your own needs.
@@ -17,13 +19,13 @@ cd /opt/weakish/explainshell/
 
 # processing manpages 
 # I don't check if the manpage is already added, since adding a manpage is fast
-# and manpage may be changed when you update your software.
+# and manpages may be changed when you update your software.
 python ./explainshell/manager.py --log info $main_program
 
-# browse the page
 
 # open the server if it is off
 if (!{lsof -i -n -P | grep -q ':5000'}) {
   python runserver.py &
 }
+# browse the page
 w3m  http://127.0.0.1:5000/explain/$main_program?args'='`{echo $* | tr ' ' '+'}
