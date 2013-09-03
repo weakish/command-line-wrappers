@@ -11,6 +11,7 @@
 #
 # I've `ln -s` /usr/share/man/man1 and man8 to manpages/1 and 8
 
+
 main_program = $*(1)
 shift 1
 
@@ -20,6 +21,7 @@ cd /opt/weakish/explainshell/
 # processing manpages 
 # I don't check if the manpage is already added, since adding a manpage is fast
 # and manpages may be changed when you update your software.
+# FIXME It will not recognize program name after a pipe line.
 python ./explainshell/manager.py --log info $main_program
 
 
