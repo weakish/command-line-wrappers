@@ -1,0 +1,3 @@
+#!/usr/bin/env rc
+
+amulecmd -c Status | /bin/grep -F '> ' && amulecmd -c 'Show DL' | /bin/grep -F 'B/s' -B 1

@@ -1,0 +1,3 @@
+#!/usr/bin/env rc
+
+amule-shutdown='amulecmd -c Shutdown'
