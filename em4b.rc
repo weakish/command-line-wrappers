@@ -1,0 +1,15 @@
+#!/usr/bin/env rc
+
+### em4b stands for ecryptfs-mount-for-bup
+
+# Usage:
+#
+# ems /path/to/encrypted/dir mount-point
+#
+
+# Options:
+# - not encrypt file names (since bup repo filenames won't leak sensitive information)
+# - AES with 16 keysize (default)
+# - Dot't allow non-eCryptfs files to  be  read  and  written from within an eCryptfs mount.
+
+sudo mount -t ecryptfs -o 'ecryptfs_enable_filename_crypto=n,ecryptfs_cipher=aes,ecryptfs_key_bytes=16,ecryptfs_passthrough=n,key=passphrase:passphrase_passwd_file=/home/weakish/.config/em4b/em4b.ini' $1 $2
