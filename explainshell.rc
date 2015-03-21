@@ -7,22 +7,20 @@
 
 # config
 #
-# My explainshell repo is under /opt/weakish/, change it to suit your own needs.
-#
-# I've `ln -s` /usr/share/man/man1 and man8 to manpages/1 and 8
+# My explainshell repo is under /pool/src/, change it to suit your own needs.
 
 
 main_program = $*(1)
 shift 1
 
 # prepare the environment
-cd /opt/weakish/explainshell/
+cd /pool/src/explainshell/
 
 # processing manpages 
 # I don't check if the manpage is already added, since adding a manpage is fast
 # and manpages may be changed when you update your software.
 # FIXME It will not recognize program name after a pipe line.
-python ./explainshell/manager.py --log info $main_program
+python ./explainshell/manager.py $main_program
 
 
 # open the server if it is off
