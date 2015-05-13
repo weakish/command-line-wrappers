@@ -1,7 +1,6 @@
 #!/usr/bin/env rc
-
-# by Jakukyo Friel <weakish@gmail.com>
-# under Apache License, Version 2.0, <http://www.apache.org/licenses/LICENSE-2.0.html>
+# by Jakukyo Friel <weakish@gmail.com> (https://weakish.github.io)
+# under MIT
 
 # Usage:
 
@@ -9,5 +8,17 @@
 #     15
 #     ~ $
 
-# The "scale=6" allows for division to be carried out to 6 decimal places.
-echo 'scale=8;' $* | bc
+# Need this because Byron Rakitzis' rewrite for Unix uses `$^` instead of
+# original rc's `$"`.
+
+
+fn list_to_string {
+  converted_string='' {
+    i=() for (i in $*) {
+      converted_string = $converted_string^$i
+    }
+    echo -n $converted_string
+  }
+}
+
+exp=`{list_to_string $*} awk 'BEGIN {print '$exp'}'
