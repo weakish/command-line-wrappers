@@ -16,15 +16,39 @@
 
 output_file_name = ARGV.first
 
+def has_cmd?
+  systemh('which', cmd)
+end
+
 def has_avconv?
-  system('which', 'avconv')
+  has_cmd?('avconv')
+end
+
+def has_ffmpeg?
+  has_cmd?('ffmpeg')
+end
+
+def has_mkvmerge?
+  has_cmd?('mkvmerge')
 end
 
 file_names = Dir.glob('*').sort
 videos = file_names.join('|')
 
 if has_avconv?
-  system 'avconv', '-i', "concat:#{videos}", output_file_name
+  system 'avconv', '-i', "concat:#{videos}", '-codec', 'copy', output_file_name
+elsif has_ffmpeg?
+  system 'ffmpeg', '-i', "concat:#{videos}", '-codec', 'copy', output_file_name
+elsif has_mkvmerge?
+  if not output_file_name.end_with?('.mkv', 'MKV')
+    ext = /\.[A-z0-9]+$/
+    if output_file_name.match(ext)
+      output_file_name.sub! ext, '.mkv'
+    else
+      output_file_name += '.mkv'
+    end
+  end
+  system 'mkvmerge', '-o', output_file_name, *file_names
 else
-  puts 'avconv is unavailable.'
+  puts 'avconv/ffmpeg/mkvmerge is unavailable.'
 end
