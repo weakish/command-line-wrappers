@@ -11,3 +11,4 @@ for f in *; do
   echo "file '$f'" >> VIDEO_LIST;
 done
 ffmpeg -f concat -i VIDEO_LIST -c copy $1
+rm VIDEO_LIST
