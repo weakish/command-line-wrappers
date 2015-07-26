@@ -5,7 +5,7 @@
 # under MIT.
 
 # Combine videos into one.
-# Note: you need a recent version of avconv.
+# Note: you need a recent version of avconv/ffmpeg/mkvmerge.
 # Usage:
 #     cd /path/to/videos && cat-videos output_file_name
 # The directory should only contains video files you want to combine,
@@ -13,6 +13,7 @@
 #
 # Tested under ruby 1.9.3p484.
 
+require 'mimemagic'
 
 output_file_name = ARGV.first
 
@@ -35,11 +36,15 @@ end
 file_names = Dir.glob('*').sort
 videos = file_names.join('|')
 
-if has_avconv?
-  system 'avconv', '-i', "concat:#{videos}", '-codec', 'copy', output_file_name
-elsif has_ffmpeg?
+def avconv
+  system 'avconv', '-i', "concat:#{videos}", output_file_name
+end
+
+def ffmpeg
   system 'ffmpeg', '-i', "concat:#{videos}", '-codec', 'copy', output_file_name
-elsif has_mkvmerge?
+end
+
+def mkvmerge
   if not output_file_name.end_with?('.mkv', 'MKV')
     ext = /\.[A-z0-9]+$/
     if output_file_name.match(ext)
@@ -49,6 +54,14 @@ elsif has_mkvmerge?
     end
   end
   system 'mkvmerge', '-o', output_file_name, *file_names
+end
+
+if has_avconv?
+  avconv
+elsif has_ffmpeg?
+  ffmpeg
+elsif has_mkvmerge?
+  mkvmerge
 else
   puts 'avconv/ffmpeg/mkvmerge is unavailable.'
 end
