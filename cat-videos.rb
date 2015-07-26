@@ -14,9 +14,17 @@
 # Tested under ruby 1.9.3p484.
 
 
+output_file_name = ARGV.first
+
+def has_avconv?
+  system('which', 'avconv')
+end
+
 file_names = Dir.glob('*').sort
 videos = file_names.join('|')
 
-output_file_name = ARGV.first
-
-system 'avconv', '-i', "concat:#{videos}", output_file_name
+if has_avconv?
+  system 'avconv', '-i', "concat:#{videos}", output_file_name
+else
+  puts 'avconv is unavailable.'
+end
