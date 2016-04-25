@@ -4,7 +4,7 @@
 
 # Usage:
 #
-# ems /path/to/encrypted/dir mount-point
+# em4b /path/to/encrypted/dir mount-point
 #
 
 # Options:
