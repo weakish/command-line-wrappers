@@ -1,8 +1,8 @@
 function fish_prompt
-  set --local last_status $status
-  set --local red (set_color -o red) 
-  if test $last_status -ne 0
-    set error_exit "$red($last_status) "
+  if test $status -ne 0
+    set_color -o red
+    echo -n "$red; "
+  else
+    echo -n "; "
   end
-	echo -n "$error_exit; "
 end
